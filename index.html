@@ -1,0 +1,31 @@
+<!--A Simple Clock-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>clock</title>
+    <style>
+       .time {
+          padding-top: 120px;
+          font-size: 16rem;
+		  text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="time" id="time">00:00</div>
+    <script>
+      function update() {
+        var date = new Date()
+        var utc8DiffMinutes = date.getTimezoneOffset() + 480
+        date.setMinutes(date.getMinutes() + utc8DiffMinutes)
+        var timeString = date.getHours() + ':' + ('0' + date.getMinutes()).slice(-2)
+        document.getElementById("time").innerHTML = timeString
+      }
+      update()
+      setInterval("update()", 60 * 1000)
+    </script>
+</body>
+</html>
+
